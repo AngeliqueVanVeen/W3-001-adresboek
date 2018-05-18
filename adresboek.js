@@ -22,9 +22,26 @@ var adresboek = [theo, adri, linda, rinus];
 
 var eenKaartUitvoeren = function (iemand) {
     var element = document.createElement('div');
+    // element.onclick = function () {
+    //     alert("Op kaart geklikt");
+    //  };
+
+     
     element.className = 'kaart';
     // naam
     var naamParagraaf = document.createElement('p');
+
+    naamParagraaf.onclick = function () {
+       alert("Op naam geklikt: " + naamParagraaf.innerHTML); // later netter maken
+       // vraag een nieuwe waarde
+       var person = prompt("Bewerk de naam: ", naamParagraaf.innerHTML);
+       // ik overschrijf de oude waarde met de nieuwe waarde
+        naamParagraaf.innerHTML = person;
+        
+       // eventueel scherm verversen danwel het adresboek bijwerken
+
+    };
+
     var naamInhoud = document.createTextNode('naam: ' + iemand.voornaam + ' ' + iemand.tv + ' ' + iemand.achternaam);
     naamParagraaf.appendChild(naamInhoud);
     element.appendChild(naamParagraaf);
@@ -58,6 +75,13 @@ var allesUitvoeren = function () {
     }
 }
 
+
+function nieuwContact () {
+    var tempKaart = new Kaart('-', '-', '-', '-', '-', '-', '-', '-');
+    adresboek = adresboek + tempKaart;
+    eenKaartUitvoeren(tempKaart);
+
+}
 
 
 
